@@ -13,7 +13,7 @@ namespace LaravelOutletDomain;
 class OutletDomain
 {
 
-    const CONFIG_PATH = __DIR__ . '/../../config/outlet-domain.php';
+    const CONFIG_PATH = __DIR__ . '/../config/outlet-domain.php';
 
     private $config;
 
