@@ -7,5 +7,17 @@
             "email": "dev.karpovich@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "LaravelOutletDomain\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "OutletDomain": "LaravelOutletDomain\\Facades\\OutletDomain"
+            }
+        }
+    },
     "require": {}
 }
