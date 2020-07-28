@@ -6,10 +6,10 @@ namespace LaravelOutletDomain;
 /**
  * Class OutletDomain
  *
- * @package LaravelOutletDomain\OutletDomain
+ * @package LaravelOutletDomain\OutletDomainFactory
  */
 
-class OutletDomain
+class OutletDomainFactory
 {
     public function test() : string
     {
