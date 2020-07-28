@@ -9,4 +9,8 @@ class OutletDomain
     {
         return 'test';
     }
+    public function config() : array
+    {
+        return config('outlet-domain');
+    }
 }
