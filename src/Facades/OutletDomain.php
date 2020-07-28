@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Facade;
 class OutletDomain extends Facade
 {
     protected static function getFacadeAccessor() {
-        return 'qr-code';
+        return 'outlet-domain';
     }
 }
