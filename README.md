@@ -4,4 +4,4 @@
 ## Set configuration
 
 ## Publish config
-`php artisan vendor:publish --provider=LaravelOutletDomain\Providers\OutletDomainServiceProvider`
+`php artisan vendor:publish --provider="LaravelOutletDomain\Providers\OutletDomainServiceProvider"`
