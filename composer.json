@@ -1,0 +1,11 @@
+{
+    "name": "zloadmin/outlet-domain",
+    "description": "Laravel facade class for set outlet domains",
+    "authors": [
+        {
+            "name": "Vladimir Karpovich",
+            "email": "dev.karpovich@gmail.com"
+        }
+    ],
+    "require": {}
+}
