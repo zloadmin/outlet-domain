@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LaravelOutletDomain\Providers;
 use Illuminate\Support\ServiceProvider;
-use LaravelOutletDomain\OutletDomainFactory;
+use LaravelOutletDomain\OutletDomain;
 
 class OutletDomainServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class OutletDomainServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('outlet-domain', function () {
-            return new OutletDomainFactory();
+            return new OutletDomain();
         });
     }
     /**
