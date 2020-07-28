@@ -23,6 +23,7 @@
         }
     },
     "require": {
-        "toin0u/digitalocean-v2": "^3.0.0"
+        "toin0u/digitalocean-v2": "^3.0.0",
+        "guzzlehttp/guzzle:": "^6.3.1"
     }
 }
