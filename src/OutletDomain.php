@@ -5,13 +5,14 @@ namespace LaravelOutletDomain;
 
 use DigitalOceanV2\Api\Domain;
 use DigitalOceanV2\Client;
+use DigitalOceanV2\Api\DomainRecord;
+use DigitalOceanV2\Exception\ExceptionInterface;
 
 /**
  * Class OutletDomain
  *
  * @package LaravelOutletDomain\OutletDomain
  */
-
 class OutletDomain
 {
 
@@ -30,29 +31,60 @@ class OutletDomain
         $this->client = new Client();
         $this->client->authenticate($this->getAccessToken());
     }
+
     /**
      * @return array
      */
-    public function getConfig(): array
+    private function getConfig(): array
     {
         return $this->config;
     }
 
-    private function getAccessToken() : string
+    private function getAccessToken(): string
     {
         return $this->config['digital_ocean_access_token'];
     }
 
-    public function getAllDomains() : array
+    private function getMainDomain(): string
     {
-        return $this->domain()->getAll();
+        return $this->config['main_domain'];
+    }
+
+    private function getCurrentServer(): string
+    {
+        return $this->config['current_server'];
+    }
+    private function domainRecord(): DomainRecord
+    {
+        return $this->client->domainRecord();
+    }
+
+    private function getAllRecordsByDomain(string $domain)
+    {
+        return $this->domainRecord()->getAll($domain);
+    }
+    /**
+     * Check if sub-domain record exist in DigitalOcean
+     * @param string $subDomain
+     * @return bool
+     */
+    public function isExistSubDomain(string $subDomain): bool
+    {
+        $records = $this->getAllRecordsByDomain($this->getMainDomain());
+        foreach ($records as $record) {
+            if ($record->name == $subDomain) return true;
+        }
+        return false;
     }
 
     /**
-     * @return Domain
+     * Add sub-domain record to current server
+     * @param string $subDomain
+     * @throws ExceptionInterface
+     * @return DomainRecord
      */
-    private function domain() : Domain
+    public function setSubDomain(string $subDomain)
     {
-        return $this->client->domain();
+        return $this->domainRecord()->create($this->getMainDomain(), 'A', $subDomain, $this->getCurrentServer());
     }
 }
