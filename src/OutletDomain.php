@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LaravelOutletDomain;
 
+use DigitalOceanV2\Api\Domain;
 use DigitalOceanV2\Client;
 
 /**
@@ -25,7 +26,7 @@ class OutletDomain
      */
     public function __construct()
     {
-        $this->config = is_array(config('outlet-domain')) ? config('outlet-domain') : file_get_contents(self::CONFIG_PATH);
+        $this->config = is_array(config('outlet-domain')) ? config('outlet-domain') : require self::CONFIG_PATH;
         $this->client = new Client();
         $this->client->authenticate($this->getAccessToken());
     }
@@ -42,11 +43,15 @@ class OutletDomain
         return $this->config['digital_ocean_access_token'];
     }
 
-    public function getAllDomains()
+    public function getAllDomains() : array
     {
         return $this->domain()->getAll();
     }
-    private function domain()
+
+    /**
+     * @return Domain
+     */
+    private function domain() : Domain
     {
         return $this->client->domain();
     }
