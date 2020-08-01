@@ -1,5 +1,5 @@
 ## Install 
-`composer require zloadmin/outlet-domain`
+`composer require zloadmin/outlet-domain:dev-master`
 
 ## Set configuration
 In your .env file add strings
@@ -13,10 +13,16 @@ In your .env file add strings
 ## Publish config
 `php artisan vendor:publish --provider="LaravelOutletDomain\Providers\OutletDomainServiceProvider"`
 
-## Set sub-domain
-### Check domain exist
-`OutletDomain::isExistSubDomain('holiday-inn')`
+## Using
+```php
+<?php
+use LaravelOutletDomain\Facades\OutletDomain;
 
-### Set sub-domain record
-`OutletDomain::setSubDomain('holiday-inn')`
+// Check domain exist
+OutletDomain::isExistSubDomain('holiday-inn');
+
+// Set sub-domain record
+OutletDomain::setSubDomain('holiday-inn');
+```
+
 
