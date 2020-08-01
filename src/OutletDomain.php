@@ -50,9 +50,9 @@ class OutletDomain
         return $this->config['main_domain'];
     }
 
-    private function getCurrentServer(): string
+    private function getFrontendServer(): string
     {
-        return $this->config['current_server'];
+        return $this->config['frontend_server'];
     }
     private function domainRecord(): DomainRecord
     {
@@ -78,13 +78,13 @@ class OutletDomain
     }
 
     /**
-     * Add sub-domain record to current server
+     * Add sub-domain record to frontend server
      * @param string $subDomain
      * @throws ExceptionInterface
      * @return DomainRecord
      */
     public function setSubDomain(string $subDomain)
     {
-        return $this->domainRecord()->create($this->getMainDomain(), 'A', $subDomain, $this->getCurrentServer());
+        return $this->domainRecord()->create($this->getMainDomain(), 'A', $subDomain, $this->getFrontendServer());
     }
 }

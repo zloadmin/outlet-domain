@@ -8,7 +8,7 @@ In your .env file add strings
 
 `OD_MAIN_DOMAIN=domain.com`
 
-`OD_CURRENT_SERVER=ipv4`
+`OD_FRONTEND_SERVER=ipv4`
 
 ## Publish config
 `php artisan vendor:publish --provider="LaravelOutletDomain\Providers\OutletDomainServiceProvider"`
